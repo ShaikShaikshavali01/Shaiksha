@@ -1,0 +1,51 @@
+Start the Spring Boot application
+
+Register a customer:
+
+bash
+Copy
+curl -X POST http://localhost:8080/api/customers/register \
+-H "Content-Type: application/json" \
+-d '{
+    "email": "user@example.com",
+    "fname": "John",
+    "lname": "Doe",
+    "age": 30,
+    "address": "123 Main St",
+    "phone": "+1234567890"
+}'
+
+
+
+
+Send OTP:
+
+bash
+Copy
+curl -X POST http://localhost:8080/api/otp/send \
+-H "Content-Type: application/json" \
+-d '{"email": "user@example.com"}'
+
+
+
+Validate OTP:
+
+bash
+Copy
+curl -X POST http://localhost:8080/api/otp/validate \
+-H "Content-Type: application/json" \
+-d '{
+    "email": "user@example.com",
+    "otp": "123456"
+}'
+
+
+
+Unlock user (admin only):
+
+bash
+Copy
+curl -X POST http://localhost:8080/api/admin/unlock \
+-H "Content-Type: application/json" \
+-u admin:admin123 \
+-d '{"email": "user@example.com"}'
